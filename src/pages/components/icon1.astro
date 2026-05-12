@@ -2,21 +2,17 @@
 // empty frontmatter for future use
 ---
 
-<!-- Square icon from Lucide -->
+<!-- Waveform Line -->
 
-<svg id="theSquare"
-xmlns="http://www.w3.org/2000/svg"
-width="24"
-height="24"
-viewBox="0 0 24 24"
-fill="none"
-stroke="currentColor"
-stroke-width="2"
-stroke-linecap="round"
-stroke-linejoin="round"
-class="lucide lucide-square-icon lucide-square">
-
-    <rect width="18" height="18" x="3" y="3" rx="2"/>
+<svg id="lineForm" class="lucide"
+xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -10 20 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  
+  <path class="line" d="M2 10v3"/>
+  <path class="line"d="M6 6v11"/>
+  <path class="line"d="M10 3v18"/>
+  <path class="line"d="M14 8v7"/>
+  <path class="line"d="M18 5v13"/>
+  <path class="line"d="M22 10v3"/>
 
 </svg>
 
@@ -24,31 +20,33 @@ class="lucide lucide-square-icon lucide-square">
 <script>
     import gsap from 'gsap';
 
-    gsap.from('#theSquare rect', {
-        scale: 0,
-        transformOrigin: 'center',
-        duration: 0.6,
-        ease: 'back.out(1.7)'
+    gsap.from('#lineForm', {
+        scaleY: 0,
+        transformOrigin: 'center center',
+        duration: .5,
+        ease: "back",
+        delay: 0.5
     });
 
     // Hover animations
-    const square = document.querySelector('#theSquare');
+    const lineForm = document.querySelector('#lineForm');
 
-    square.addEventListener('mouseenter', () => {
-        gsap.to('#theSquare rect', {
-            scale: 1.2,
-            transformOrigin: 'center',
-            duration: 0.3,
-            ease: 'power2.out'
+    lineForm.addEventListener('mouseenter', () => {
+        gsap.to(".line", { 
+            scaleY: 1.3, 
+            duration: 0.3, 
+            stagger: 0.05,
+            transformOrigin: "center center",
+            ease: "back"
         });
     });
 
-    square.addEventListener('mouseleave', () => {
-        gsap.to('#theSquare rect', {
-            scale: 1,
-            transformOrigin: 'center',
-            duration: 0.3,
-            ease: 'power2.in'
+    lineForm.addEventListener('mouseleave', () => {
+       gsap.to(".line", { 
+            scaleY: 1, 
+            duration: 0.3, 
+            stagger: 0.05,
+            ease: "back",
         });
     });
 </script>

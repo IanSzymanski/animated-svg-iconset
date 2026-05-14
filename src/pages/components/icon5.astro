@@ -2,54 +2,43 @@
 // empty frontmatter for future use
 ---
 
-<!-- Hexagon icon from Lucide -->
+<!-- Wave -->
 
-<svg id="theHexagon"
-xmlns="http://www.w3.org/2000/svg"
-width="24"
-height="24"
-viewBox="0 0 24 24"
-fill="none"
-stroke="currentColor"
-stroke-width="2"
-stroke-linecap="round"
-stroke-linejoin="round"
-class="lucide lucide-hexagon-icon lucide-hexagon">
-
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="wave" class="lucide">
+    <path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"/>
 </svg>
 
 <!-- GSAP Scripting -->
 <script>
     import gsap from 'gsap';
 
-    gsap.from('#theHexagon path', {
-        scale: 2,
+    gsap.from('#wave', {
+        rotate: -100,
+        scale: .5,
         opacity: 0,
-        transformOrigin: 'center',
-        duration: 0.7,
-        ease: 'elastic.out(1, 0.5)'
+        transformOrigin: 'center center',
+        ease: "back",
+        duration: .5,
+        delay: 0.9
     });
 
     // Hover animations
-    const hexagon = document.querySelector('#theHexagon');
+    const wave = document.querySelector('#wave');
 
-    hexagon.addEventListener('mouseenter', () => {
-        gsap.to('#theHexagon path', {
-            rotation: 30,
-            transformOrigin: 'center',
-            duration: 0.4,
-            ease: 'power2.out'
-        });
-    });
-
-    hexagon.addEventListener('mouseleave', () => {
-        gsap.to('#theHexagon path', {
-            rotation: 0,
-            transformOrigin: 'center',
-            duration: 0.4,
-            ease: 'power2.in'
-        });
+    wave.addEventListener('mouseenter', () => {
+        gsap.timeline()
+.to("#wave", { 
+  scaleY: -1.4,
+  scaleX: .7,
+  duration: 1, 
+  ease: "back"
+})
+.to("#wave", { 
+  scaleY: 1,
+  scaleX: 1,
+  duration: 1, 
+  delay: -.25,
+  ease: "back.out",
+});
     });
 </script>

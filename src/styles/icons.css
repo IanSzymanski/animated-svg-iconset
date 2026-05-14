@@ -24,3 +24,11 @@ body {
     width: 100px;
     height: 100px;
 }
+
+#lineForm {
+    scale: 2;
+    transform: translateY(5px);
+}
+#volume {
+    scale: 1.1;
+}

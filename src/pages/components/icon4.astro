@@ -2,54 +2,78 @@
 // empty frontmatter for future use
 ---
 
-<!-- Diamond icon from Lucide -->
+<!-- Volume -->
 
-<svg id="theDiamond"
-xmlns="http://www.w3.org/2000/svg"
-width="24"
-height="24"
-viewBox="0 0 24 24"
-fill="none"
-stroke="currentColor"
-stroke-width="2"
-stroke-linecap="round"
-stroke-linejoin="round"
-class="lucide lucide-diamond-icon lucide-diamond">
-
-    <path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41L13.7 2.71a2.41 2.41 0 0 0-3.41 0Z"/>
-
-</svg>
+<svg class="lucide" id="volume" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path class="speaker" d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/>
+  <path class="small" d="M16 9a5 5 0 0 1 0 6"/>
+  <path class="big"d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>
 
 <!-- GSAP Scripting -->
 <script>
     import gsap from 'gsap';
-
-    gsap.from('#theDiamond path', {
-        rotation: 180,
-        transformOrigin: 'center',
+    gsap.timeline()
+    .from('#volume', {
+        y: -20,
         opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out'
+        duration: 0.5,
+        ease: 'bounce.out',
+        delay: 0.8
+    })
+    .to('.big, .small', {
+        opacity: 0,
+        delay: -1
     });
 
     // Hover animations
-    const diamond = document.querySelector('#theDiamond');
+    const volume = document.querySelector('#volume');
 
-    diamond.addEventListener('mouseenter', () => {
-        gsap.to('#theDiamond path', {
-            rotation: 45,
-            transformOrigin: 'center',
-            duration: 0.4,
-            ease: 'power2.out'
-        });
-    });
+    volume.addEventListener('mouseenter', () => {
+       gsap.timeline()
+.to(".big, .small", {
+  x: -6,
+  scaleX: 1,
+  scaleY: .2,
+  opacity: 0,
+  stagger: .1,
+  ease: "back",
+  delay: -.4,
+  transformOrigin: "center center",
+       })
+.to(".speaker", { 
+  scale: .8,
+  rotate: -10,
+  duration: .4,
+  ease: "ease",
+  transformOrigin: "center center",
+})
+.to(".speaker", { 
+  scale: 1.15,
+  rotate: 0,
+  duration: .4,
+  ease: "back.out",
+})
+.to(".big, .small", {
+  x: 0,
+  scaleX: 1,
+  scaleY: 1,
+  opacity: 1,
+  stagger: .1,
+  ease: "back",
+  delay: -.4,
+})
+.to(".speaker", { 
+  scale: 1,
+  duration: .5,
+  delay: -.3,
+  ease: "bounce.out",
+})
+.to(".big, .small", {
+  duration: .9,
+  opacity: 0,
+  stagger: .1,
+  ease: "back",
+});
 
-    diamond.addEventListener('mouseleave', () => {
-        gsap.to('#theDiamond path', {
-            rotation: 0,
-            transformOrigin: 'center',
-            duration: 0.4,
-            ease: 'power2.in'
-        });
     });
 </script>

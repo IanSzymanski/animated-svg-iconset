@@ -5,56 +5,65 @@
 <!-- Waveform Line -->
 
 <svg id="lineForm" class="lucide"
-xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -10 20 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  
+    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -10 20 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <path class="line" d="M2 10v3"/>
-  <path class="line"d="M6 6v11"/>
-  <path class="line"d="M10 3v18"/>
-  <path class="line"d="M14 8v7"/>
-  <path class="line"d="M18 5v13"/>
-  <path class="line"d="M22 10v3"/>
-
+  <path class="line" d="M6 6v11"/>
+  <path class="line" d="M10 3v18"/>
+  <path class="line" d="M14 8v7"/>
+  <path class="line" d="M18 5v13"/>
+  <path class="line" d="M22 10v3"/>
 </svg>
 
 <!-- GSAP Scripting -->
 <script>
-    import gsap from 'gsap';
+  import gsap from 'gsap';
 
-    gsap.from('#lineForm', {
-        scaleY: 0,
+  gsap.from('#lineForm', {
+    scaleY: 0,
+    transformOrigin: 'center center',
+    duration: 0.5,
+    ease: 'back',
+    delay: 0.5
+  });
+
+  // Hover animations
+  const Lineform = document.querySelector('#lineForm');
+
+  Lineform.addEventListener('mouseenter', () => {
+    gsap.timeline()
+      .to('#lineForm', {
+        stroke: '#00FFAE',
+        duration: .6,
+        ease: 'back'
+      })
+      .to('.line', {
+        scaleY: 0.6,
+        duration: 0.8,
+        stagger: 0.05,
         transformOrigin: 'center center',
-        duration: .5,
-        ease: "back",
-        delay: 0.5
-    });
-
-    // Hover animations
-    const lineForm = document.querySelector('#lineForm');
-
-    lineForm.addEventListener('mouseenter', () => {
-        gsap.timeline()
-.to(".line", { 
-  scaleY: .6, 
-  duration: 0.8, 
-  stagger: 0.05,
-  transformOrigin: "center center",
-  ease: "back"
-})
-.to(".line", { 
-  scaleY: 1.9, 
-  duration: .3, 
-  stagger: 0.05,
-  transformOrigin: "center center",
-  ease: "back",
-  delay: -.5
-})
-.to(".line", { 
-  scaleY: 1, 
-  duration: 0.9, 
-  stagger: 0.08,
-  ease: "back",
-  delay: -.4
-});
-    });
-
+        ease: 'back',
+        delay: -0.6
+      })
+      .to('.line', {
+        scaleY: 1.9,
+        duration: 0.3,
+        stagger: 0.05,
+        transformOrigin: 'center center',
+        ease: 'back',
+        delay: -0.5
+      })
+      .to('.line', {
+        scaleY: 1,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'back',
+        delay: -0.4
+      })
+      .to('#lineForm', {
+        stroke: '#f8f8f8',
+        duration: 1,
+        ease: 'back',
+        delay: -0.5
+      });
+  });
 </script>

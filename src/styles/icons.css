@@ -1,13 +1,39 @@
-/* Layout */
 
+:root {
+    --color-purple: #af36ff;
+    --color-green: #00ffae;
+    --light-surface-color: #ffffff;
+    --dark-surface-color: #181718;
+    --medium-surface-color: #4f4f4f;
+    --dark-surface-accent: #2b2a2b;
+    --light-surface-accent: #c9c9c9;
+    --gradient-primary: linear-gradient(90deg, var(--color-green) 0%, var(--color-purple) 100%);
+    --shadow-drop: 0.5vw 0.5vw 10px var(--dark-surface-accent);
+    --hover-drop: 0.5vw 0.5vw 10px var(--medium-surface-color);
+    --gradient-background: linear-gradient(90deg, var(--dark-surface-color) 0%, var(--dark-surface-accent) 100%);
+  }/* Layout */
+
+h1 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
 body {
     margin: 0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f8f8;
-    color: #333;
+    background: var(--gradient-background);
+    color: #F0FFFA;
+    font-family: 'General Sans', sans-serif;
 }
 
 .icon-grid {

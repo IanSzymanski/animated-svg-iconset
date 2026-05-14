@@ -5,40 +5,51 @@
 <!-- Wave -->
 
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="wave" class="lucide">
-    <path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"/>
+  <path d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"/>
 </svg>
 
 <!-- GSAP Scripting -->
 <script>
-    import gsap from 'gsap';
+  import gsap from 'gsap';
 
-    gsap.from('#wave', {
-        rotate: -100,
-        scale: .5,
-        opacity: 0,
-        transformOrigin: 'center center',
-        ease: "back",
-        duration: .5,
-        delay: 0.9
-    });
+  gsap.from('#wave', {
+    rotate: -100,
+    scale: 0.5,
+    opacity: 0,
+    transformOrigin: 'center center',
+    ease: 'back',
+    duration: 0.5,
+    delay: 0.9
+  });
 
-    // Hover animations
-    const wave = document.querySelector('#wave');
+  const Wave = document.querySelector('#wave');
 
-    wave.addEventListener('mouseenter', () => {
-        gsap.timeline()
-.to("#wave", { 
-  scaleY: -1.4,
-  scaleX: .7,
-  duration: 1, 
-  ease: "back"
-})
-.to("#wave", { 
-  scaleY: 1,
-  scaleX: 1,
-  duration: 1, 
-  delay: -.25,
-  ease: "back.out",
-});
-    });
+  Wave.addEventListener('mouseenter', () => {
+    gsap.timeline()
+      .to('#wave', {
+        stroke: '#AF36FF',
+        duration: .6,
+        ease: 'back'
+      })
+      .to('#wave', {
+        scaleY: -1.4,
+        scaleX: 0.7,
+        duration: 1,
+        ease: 'back',
+        delay: -0.6
+      })
+      .to('#wave', {
+        scaleY: 1,
+        scaleX: 1,
+        duration: 1,
+        delay: -0.25,
+        ease: 'back.out'
+      })
+      .to('#wave', {
+        stroke: '#f8f8f8',
+        duration: 1,
+        ease: 'back',
+        delay: -0.8
+      });
+  });
 </script>
